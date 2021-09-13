@@ -21,14 +21,19 @@ function App() {
 
       <StatsCard />
 
-      <Row gutter={24}>
-        <Col sm={16} xs={24} style={{ marginBottom: 24 }}>
+        <ChatEndPieCard  />
+
         <ChatEndTrendCard />
-        </Col>
-        <Col sm={8} xs={24} style={{ marginBottom: 24 }}>
-        <ChatEndPieCard />
-        </Col>
-        </Row>
+
+      {/*  */}
+      {/*<Row gutter={24}>*/}
+      {/*  <Col sm={16} xs={24} style={{ marginBottom: 24 }}>*/}
+      {/*  <ChatEndTrendCard />*/}
+      {/*  </Col>*/}
+      {/*  <Col sm={8} xs={24} style={{ marginBottom: 24 }}>*/}
+      {/*  <ChatEndPieCard />*/}
+      {/*  </Col>*/}
+      {/*  </Row>*/}
       
       <WordCloudCard />
 

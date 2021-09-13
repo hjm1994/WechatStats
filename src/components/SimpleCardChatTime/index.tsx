@@ -1,47 +1,58 @@
-/**
-标题：对话总数
-主内容：对话总数 和 近 20 天的对话次数折线图
-底部内容：Amiee 百分比 小李 百分比
- */
 import React, { useState } from "react";
 import numeral from 'numeral';
 import ChartCard from "../ChartCard";
 import Field from "../Field";
-import Trend from "../Trend";
 import { Progress } from '@ant-design/charts';
-import { visitData } from '../../data';
+import { simpleChatTime } from '../../data';
+import Trend from "../Trend";
+
 
 export default function SimpleCardChatTime  () {
+    const {
+        earlyCount,
+        earlyPercent,
+        frequentlyTime,
+        dayTotal,
+        secondTime,
+    } = simpleChatTime;
   return (
     <ChartCard
       bordered={false}
-      title="总销售额"
-      total={numeral(1122.12).format('0,0') + ' 小时'}
+      title="最频繁的聊天结束时间"
+      total={frequentlyTime}
       contentHeight={46}
       footer={
         <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', display: 'flex' }}>
-          <Field label="语音" value={numeral(12).format('0,0') + '小时'} style={{ marginRight: 16 }} />
-          <Field label="视频" value={numeral(12).format('0,0') + '小时'} />
+          <Field label="0点前结束" value={numeral(earlyCount).format('0,0')} style={{ marginRight: 16 }} />
+          <Field label="聊天总天数" value={numeral(dayTotal).format('0,0')} />
         </div>
       }
     >
-         <Progress
-          height={46}
-          percent={0.78}
-          color="#13C2C2"
-          barWidthRatio={0.2}
-          // annotations={[
-          //   {
-          //     type: 'line',
-          //     start: ['80%', '0%'],
-          //     end: ['80%', '100%'],
-          //     style: {
-          //       stroke: '#13C2C2',
-          //       lineWidth: 2,
-          //     },
-          //   },
-          // ]}
-        />
+
+        <div style={{whiteSpace: 'nowrap', overflow: 'hidden'}}>
+            <Trend style={{marginRight: 16}}>
+                其次是
+                <span className="trendText">{secondTime}</span>
+            </Trend>
+        </div>
+
+        {/* <Progress*/}
+        {/*  height={46}*/}
+        {/*  percent={earlyPercent}*/}
+        {/*  color="#13C2C2"*/}
+        {/*  barWidthRatio={0.2}*/}
+        {/*  // annotations={[*/}
+        {/*  //   {*/}
+        {/*  //     type: 'line',*/}
+        {/*  //     start: ['80%', '0%'],*/}
+        {/*  //     end: ['80%', '100%'],*/}
+        {/*  //     style: {*/}
+        {/*  //       stroke: '#13C2C2',*/}
+        {/*  //       lineWidth: 2,*/}
+        {/*  //     },*/}
+        {/*  //   },*/}
+        {/*  // ]}*/}
+        {/*/>*/}
     </ChartCard>
   );
 }

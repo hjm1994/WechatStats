@@ -50,3 +50,20 @@ export function getTimeDistance(type: 'today' | 'week' | 'month' | 'year'): Rang
 
   return [moment(`${year}-01-01 00:00:00`), moment(`${year}-12-31 23:59:59`)];
 }
+
+const LAST_CHAT_VALUE_MAP = {
+  0: '其它',
+  1: '20:00-21:00',
+  2: '21:00-22:00',
+  3: '22:00-23:00',
+  4: '23:00-00:00',
+  5: '00:00-01:00',
+  6: '01:00-02:00',
+  7: '02:00-03:00',
+  8: '03:00-04:00',
+  9: '04:00-05:00',
+}
+
+export function lastChatValueToTime(lastChatValue: number): string {
+  return LAST_CHAT_VALUE_MAP[lastChatValue] || ''
+}

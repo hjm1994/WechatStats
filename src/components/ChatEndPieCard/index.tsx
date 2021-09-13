@@ -4,60 +4,33 @@ import { Card, Col, DatePicker, Row, Tabs } from "antd";
 import type { RangePickerProps } from "antd/es/date-picker/generatePicker";
 import type moment from "moment";
 import { Pie } from "@ant-design/charts";
-import { getTimeDistance } from "../../utils/utils";
-import { generateChatEndData } from "../../data/generate";
+import {pieData} from "../../data";
 
-type RangePickerValue = RangePickerProps<moment.Moment>["value"];
-export type TimeType = "today" | "week" | "month" | "year";
-
-const { RangePicker } = DatePicker;
+console.log(pieData)
 
 export default function ChatEndPieCard() {
-  
-  var data = [
-    {
-      type: '分类一',
-      value: 27,
-    },
-    {
-      type: '分类二',
-      value: 25,
-    },
-    {
-      type: '分类三',
-      value: 18,
-    },
-    {
-      type: '分类四',
-      value: 15,
-    },
-    {
-      type: '分类五',
-      value: 10,
-    },
-    {
-      type: '其他',
-      value: 5,
-    },
-  ];
+
   var config = {
     appendPadding: 10,
-    data: data,
+    data: pieData,
     angleField: 'value',
-    colorField: 'type',
+    colorField: 'time',
     radius: 0.75,
-    legend: false,
     label: {
-      type: 'spider',
-      labelHeight: 28,
-      content: '{name}\n{percentage}',
+      type: 'outer',
+      content: '{name} {percentage}',
     },
+
+
     interactions: [{ type: 'element-selected' }, { type: 'element-active' }],
+
+
   };
   return  <Card
-      title="123"
+      title="聊天结束时间统计"
       bordered={false}
       bodyStyle={{ padding: 0 }}
+      style={{ marginBottom: 24, paddingRight: 40 }}
     >
       <Pie {...config} />
     </Card>;

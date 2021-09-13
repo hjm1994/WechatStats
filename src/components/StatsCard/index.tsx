@@ -87,53 +87,36 @@ export default function StatsCard() {
           size="large"
           tabBarStyle={{ marginBottom: 24 }}
         >
-          <TabPane tab="销售额" key="sales">
+          <TabPane tab="对话次数" key="sales">
             <div className={"salesBar"}>
               <Column
                 height={300}
-                
                 data={chatCountData as any}
                 xField="x"
                 yField="y"
-                // xAxis={{
-                //   visible: true,
-                //   title: {
-                //     visible: false,
-                //   },
-                // }}
-                // yAxis={{
-                //   visible: true,
-                //   title: {
-                //     visible: false,
-                //   },
-                // }}
-                // title={{
-                //   visible: true,
-                //   text: "销售趋势",
-                //   style: {
-                //     fontSize: 14,
-                //   },
-                // }}
                 meta={{
                   y: {
-                    alias: "销售量",
+                    alias: "对话次数",
                   },
+                }}
+                slider={{
+                  start: 0,
+                  end: 1,
                 }}
               />
             </div>
           </TabPane>
 
-          <TabPane tab="访问量" key="views">
+          <TabPane tab="语音时长" key="views">
             <div className={"salesBar"}>
               <Column
                 height={300}
                 data={voiceData as any}
                 xField="x"
                 yField="y"
-              
                 meta={{
                   y: {
-                    alias: "销售量",
+                    alias: "语音时长(分钟)",
                   },
                 }}
               />
