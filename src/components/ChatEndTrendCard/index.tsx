@@ -34,7 +34,7 @@ export default function StatsCard() {
     },
     tooltip: {
       formatter: (datum: Datum) => {
-        return { name: datum.x, value: lastChatValueToTime(Number(datum.y)) };
+        return { name: datum.time, value: lastChatValueToTime(Number(datum.lastChatValue)) };
       },
     },
     stepType: 'vh',
